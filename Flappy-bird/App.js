@@ -14,7 +14,7 @@ export default function App() {
   const [birdBottom, setBirdBottom] = useState(screenHeight/2);
   const [ObstaclesLeft, setObstacleLeft] = useState(screenWidth);
   //Second obstacles
-  const [ObstaclesLeftTwo, setObstaclesLeftTwo] = useState (screenWidth); //maybe bug
+  const [ObstaclesLeftTwo, setObstaclesLeftTwo] = useState (-screenWidth); //maybe bug
   //For crush 
   const [ObstaclesNegHeight, setObstacleNegHeight] = useState(0);
   const [ObstaclesNegHeightTwo, setObstacleNegHeightTwo] = useState(0);
@@ -108,9 +108,54 @@ export default function App() {
       )
     )
     {
-      isGameOver()
+      GameOver()
     }
   })
+
+
+
+  //==================== Game over ====================
+  const GameOver = () => {
+    clearInterval(gameTimerId)
+    clearInterval(ObstaclesTimerId)
+    clearInterval(ObstaclesTimerIdTwo)
+    setIsGameOver(true) // Maybe bug
+  }
+
+  return (
+    <TouchableWithoutFeedback onPress={jump}>
+      <View style={styles.container}>
+        {{isGameOver} &&
+         <Text style={{fontSize: '30px', marginTop: 50,}}>{score}</Text>}
+        <Bird
+          birdBottom = {birdBottom}
+          birdLeft = {birdLeft}
+        />
+        <Obstacles
+          color={"green"}
+          ObstaclesWidth = {ObstaclesWidth}
+          ObstaclesHeight = {ObstaclesHeight}
+          randomBottom = {ObstaclesNegHeight}
+          gap = {gap}
+          ObstaclesLeft = {ObstaclesLeft}
+        />
+        <Obstacles
+          color={"yellow"}
+          ObstaclesWidth = {ObstaclesWidth}
+          ObstaclesHeight = {ObstaclesHeight}
+          randomBottom = {ObstaclesNegHeightTwo}
+          gap = {gap}
+          ObstaclesLeft = {ObstaclesLeft}
+        />
+      </View>
+    </TouchableWithoutFeedback>
+  )
 }
 
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+})

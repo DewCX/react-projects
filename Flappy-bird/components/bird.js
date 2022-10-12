@@ -8,7 +8,7 @@ const Bird = ({birdBottom, birdLeft}) => {
     return (
         <View style={{
             position: "absolute",
-            backgroundColor: "blue",
+            backgroundColor: "black",
             width: birdWidth,
             height: birdHeight,
             left: birdLeft - (birdWidth/2),
