@@ -93,12 +93,24 @@ export default function App() {
   }, [ObstaclesLeftTwo])
 
 
+  //==================== Check For Collisions ====================
 
-
-
-
-
-
+  useEffect(() => {
+    if(
+      ((birdBottom < (ObstaclesNegHeight + ObstaclesHeight + 30) ||
+      birdBottom > (ObstaclesNegHeight + ObstaclesHeight + gap - 30)) && 
+      (ObstaclesLeft > screenWidth/2 - 30 && ObstaclesLeft < screenWidth/2 + 30)
+      )
+      ||
+      ((birdBottom < (ObstaclesNegHeightTwo + ObstaclesNegHeightTwo + 30) ||
+      birdBottom > (ObstaclesNegHeightTwo + ObstaclesNegHeightTwo + gap - 30)) && 
+      (ObstaclesLeftTwo > screenWidth/2 - 30 && ObstaclesLeftTwo < screenWidth/2 + 30)
+      )
+    )
+    {
+      isGameOver()
+    }
+  })
 }
 
 
