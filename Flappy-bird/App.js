@@ -35,5 +35,30 @@ export default function App() {
   let ObstaclesTimerIdTwo;
 
 
+
+  // ==================== Start bird falling  ====================
+  useEffect(() => {
+    if (birdBottom > 0){
+      gameTimerId = setInterval(() => {
+        setBirdBottom(birdBottom => birdBottom - gravity)
+      }, 30)
+
+      return () => {
+        clearInterval(gameTimerId)
+      }
+    }
+  }, [birdBottom])
+
+  // ==================== Jump ====================
+  const jump = () => {
+    if(!isGameOver && (birdBottom < screenHeight)) {
+      setBirdBottom(birdBottom => birdBottom + 50)
+    }
+  }
+
+
+
+
 }
+
 
