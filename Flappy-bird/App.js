@@ -49,12 +49,52 @@ export default function App() {
     }
   }, [birdBottom])
 
+
   // ==================== Jump ====================
   const jump = () => {
     if(!isGameOver && (birdBottom < screenHeight)) {
       setBirdBottom(birdBottom => birdBottom + 50)
     }
   }
+
+
+
+  //==================== Start first obstacle ====================
+  useEffect( () => {
+    if(ObstaclesLeft > -60){
+      ObstaclesTimerId = setInterval( () => {
+        setObstacleLeft(ObstaclesLeft => ObstaclesLeft - 5)
+      }, 30)
+      return () => {
+        clearInterval(ObstaclesTimerId)
+      }
+    } else {
+      setScore(score => score + 1)
+      setObstacleLeft(screenWidth)
+      setObstacleNegHeight ( -Math.random() *100)
+    }
+  }, [ObstaclesLeft])
+
+
+  //==================== Start second obstacle ====================
+  useEffect( () => {
+    if(ObstaclesLeftTwo > -60){
+      ObstaclesTimerIdTwo = setInterval( () => {
+        setObstaclesLeftTwo(ObstaclesLeftTwo => ObstaclesLeftTwo - 5)
+      }, 30)
+      return () => {
+        clearInterval(ObstaclesTimerIdTwo)
+      }
+    } else {
+      setScore(score => score + 1)
+      setObstaclesLeftTwo(screenWidth)
+      setObstacleNegHeightTwo ( -Math.random() *100)
+    }
+  }, [ObstaclesLeftTwo])
+
+
+
+
 
 
 
