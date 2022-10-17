@@ -7,8 +7,8 @@ const Bird = ({birdBottom, birdLeft}) => {
 
     return (
         <View style={{
-            position: "absolute",
-            backgroundColor: "black",
+            position: 'absolute',
+            backgroundColor: 'blue',
             width: birdWidth,
             height: birdHeight,
             left: birdLeft - (birdWidth/2),
@@ -17,4 +17,4 @@ const Bird = ({birdBottom, birdLeft}) => {
     )
 }
 
-export default Bird;
+export default Bird

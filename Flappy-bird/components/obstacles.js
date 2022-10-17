@@ -1,42 +1,34 @@
-import React from "react";
-import { View } from "react-native";
+import React from 'react';
+import { View } from 'react-native';
 
 const Obstacles = ({
     color,
-    ObstaclesWidth,
-    ObstaclesHeight,
-    randomBottom,
-    gap,
-    ObstaclesLeft, }) => {
-        
+    obstacleWidth, 
+    obstacleHeight, 
+    randomBottom, 
+    gap, 
+    obstaclesLeft}) => {
 
-        return(
-                <>
+    return (
+        <>
+            <View style={{
+                position: 'absolute',
+                backgroundColor: color,
+                width: obstacleWidth,
+                height: 500,
+                left: obstaclesLeft,
+                bottom: randomBottom + obstacleHeight + gap,
+            }}></View>
+            <View style={{
+                position: 'absolute',
+                backgroundColor: color,
+                width: obstacleWidth,
+                height: obstacleHeight,
+                left: obstaclesLeft,
+                bottom: randomBottom,
+            }}></View>
+        </>
+    )
+}
 
-                    <View style={{
-                        position: "absolute",
-                        backgroundColor: color,
-                        width: ObstaclesWidth,
-                        height: 500,
-                        left: ObstaclesLeft,
-                        bottom: randomBottom + ObstaclesHeight + gap
-                    }}></View>
-
-                    <View style={{
-                        position: "absolute",
-                        backgroundColor: color,
-                        width: ObstaclesWidth,
-                        height: 500,
-                        left: ObstaclesLeft,
-                        bottom: randomBottom + ObstaclesHeight + gap
-                    }}></View>
-
-
-                
-                
-                </>
-            
-            )
-    }
-
-export default Obstacles;
+export default Obstacles
